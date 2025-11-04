@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/docs/assets/images/logo.png" type="image/x-icon">
+
+    <!-- Styles & Scripts -->
+    <link rel="stylesheet" href="/docs/Style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.1/dist/lenis.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+
+</head>
+
+<body class="overflow-x-hidden">
+
+    <div id="bottomToTopScroll"></div>
+
+    <!-- NAV -->
+    <nav class="w-full sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-blue-100" aria-label="Main">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex h-16 md:h-22 items-center justify-between">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./docs/assets/images/logo.png" alt="FM DFW Constructions LLC logo"
+                        class="h-10 md:h-16 w-auto">
+                    <span class="sr-only">FM DFW Constructions LLC</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="./index.html"
+                        class="inline-flex items-center gap-2 text-[#003ca7] font-medium hover:text-blue-700 transition-colors">
+                        <i class="fa-solid fa-house"></i> Home
+                    </a>
+                    <a href="./gallery.html"
+                        class="inline-flex items-center gap-2 text-[#003ca7] font-medium hover:text-blue-700 transition-colors">
+                        <i class="fa-solid fa-images"></i> Recent Works
+                    </a>
+                    <a href="./index.html#contact"
+                        class="inline-flex items-center gap-2 text-white bg-[#003ca7] transition-all duration-500 hover:bg-blue-700 rounded-lg px-4 py-3 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                        <i class="fa-solid fa-envelope"></i> Get a Quote
+                    </a>
+                </div>
+
+                <button id="nav-toggle" type="button"
+                    class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-[#003ca7] hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="sr-only">Toggle main menu</span>
+                    <i id="icon-open" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white shadow-sm border-t border-blue-100">
+            <div class="space-y-1 px-4 pb-4 pt-2">
+                <a href="./index.html" class="block rounded-lg px-3 py-2 text-[#003ca7] hover:bg-blue-50">
+                    <i class="fa-solid fa-house mr-2"></i> Home
+                </a>
+                <a href="./gallery.html" class="block rounded-lg px-3 py-2 text-[#003ca7] hover:bg-blue-50">
+                    <i class="fa-solid fa-images mr-2"></i> Recent Works
+                </a>
+                <a href="./index.html#contact"
+                    class="block rounded-lg px-3 py-2 bg-[#003ca7] transition-all duration-500 text-white hover:bg-blue-700">
+                    <i class="fa-solid fa-envelope mr-2"></i> Get a Quote
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <script>
+        const btn = document.getElementById('nav-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('icon-open');
+
+        function openMenu() {
+            menu.classList.add('open');
+            menu.style.height = menu.scrollHeight + 'px';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+            menu.style.height = menu.scrollHeight + 'px';
+            requestAnimationFrame(() => {
+                menu.style.height = '0px';
+                menu.classList.remove('open');
+            });
+            btn.setAttribute('aria-expanded', 'false');
+        }
+
+        btn.addEventListener('click', () => {
+            const isOpen = btn.getAttribute('aria-expanded') === 'true';
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        menu.addEventListener('transitionend', (e) => {
+            if (e.propertyName === 'height' && menu.classList.contains('open')) {
+                menu.style.height = 'auto';
+            }
+        });
+
+        menu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (getComputedStyle(btn).display !== 'none') closeMenu();
+            });
+        });
+    </script>
+
+
+    <section id="gallery-hero" class="relative overflow-hidden bg-gradient-to-b from-white to-blue-50/40">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-200 blur-3xl opacity-40"></div>
+            <div class="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-blue-100 blur-3xl opacity-50"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24">
+            <nav class="mb-6 text-sm text-blue-900/70 hero-fade">
+                <a href="./index.html" class="hover:text-blue-800 inline-flex items-center gap-1">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+                <span class="mx-2">/</span>
+                <span class="text-blue-900 font-medium">Recent Works</span>
+            </nav>
+
+            <div class="grid items-center gap-12 md:grid-cols-2">
+                <div class="space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight text-blue-900 hero-fade">
+                        Recent Works Gallery
+                    </h1>
+                    <p class="text-blue-900/80 max-w-xl hero-fade-del1">
+                        Foundations, tilt-up walls, slabs, and drill shaft (rebar & pour). Explore our latest projects
+                        across the DFW metroplex.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-3 hero-fade-del2">
+                        <a href="#gallery"
+                            class="inline-flex md:w-auto w-full justify-center items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-white shadow hover:bg-blue-700">
+                            <i class="fa-solid fa-images"></i> View Gallery
+                        </a>
+                        <!-- <a href="#add-photos"
+                            class="inline-flex md:w-auto w-full justify-center items-center gap-2 rounded-xl border border-blue-200 bg-white px-5 py-3 text-blue-900 hover:border-blue-300 hover:bg-blue-50">
+                            <i class="fa-solid fa-upload"></i> Add Photos
+                        </a> -->
+                        <a href="./index.html#contact"
+                            class="inline-flex md:w-auto w-full justify-center items-center gap-2 text-blue-900 font-semibold hover:text-blue-700">
+                            <i class="fa-solid fa-envelope"></i> Get a Quote
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative hero-fade-del2">
+                    <div class="grid md:grid-cols-3 grid-cols-2 gap-3">
+                        <img src="https://images.unsplash.com/photo-1712711649566-16c7cfcf341c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvbmNyZXRlJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Tilt-up panels"
+                            class="h-40 w-full object-cover rounded-2xl shadow ring-1 ring-blue-100 md:h-48">
+                        <img src="https://images.unsplash.com/photo-1580223898641-1e1b2b7709cc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNvbmNyZXRlJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Foundation rebar layout"
+                            class="h-40 w-full object-cover rounded-2xl shadow ring-1 ring-blue-100 md:h-48">
+                        <img src="https://plus.unsplash.com/premium_photo-1681690743811-d5fd598be3ef?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGNvbmNyZXRlJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Drill shaft rebar & pour"
+                            class="h-40 w-full object-cover rounded-2xl shadow ring-1 ring-blue-100 md:h-48">
+                        <img src="https://images.unsplash.com/photo-1695326612772-816651657d05?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGNvbmNyZXRlJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Concrete finishing"
+                            class="h-40 w-full object-cover rounded-2xl shadow ring-1 ring-blue-100 md:h-48">
+                        <img src="https://plus.unsplash.com/premium_photo-1681690579278-bcddcf5a21d5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fGNvbmNyZXRlJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Grade beams"
+                            class="h-40 w-full object-cover rounded-2xl shadow ring-1 ring-blue-100 md:h-48">
+                        <img src="https://plus.unsplash.com/premium_photo-1681691911660-a40d4163ed9f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGNvbmNyZXRlJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Structural pour"
+                            class="h-40 w-full object-cover rounded-2xl shadow ring-1 ring-blue-100 md:h-48">
+                    </div>
+                    <div class="absolute -bottom-5 left-4 md:left-2">
+                        <div class="rounded-2xl bg-white/90 backdrop-blur px-4 py-3 shadow-lg ring-1 ring-blue-100">
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white">
+                                    <i class="fa-solid fa-hard-hat"></i>
+                                </span>
+                                <div class="text-sm">
+                                    <p class="font-semibold text-blue-900">Verified Projects</p>
+                                    <p class="text-blue-900/70">DFW • Updated regularly</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="gallery" class="relative bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-8">
+                <div class="flex flex-wrap gap-2" role="tablist" aria-label="Gallery filters">
+                    <button data-filter="all"
+                        class="filter-btn active inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-4 py-2 text-blue-900 hover:bg-blue-50"><i
+                            class="fa-solid fa-layer-group"></i> All</button>
+                    <button data-filter="foundation"
+                        class="filter-btn inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-4 py-2 text-blue-900 hover:bg-blue-50"><i
+                            class="fa-solid fa-layer-group"></i> Foundations</button>
+                    <button data-filter="tiltup"
+                        class="filter-btn inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-4 py-2 text-blue-900 hover:bg-blue-50"><i
+                            class="fa-solid fa-border-all"></i> Tilt-Up</button>
+                    <button data-filter="drillshaft"
+                        class="filter-btn inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-4 py-2 text-blue-900 hover:bg-blue-50"><i
+                            class="fa-solid fa-bars-staggered"></i> Drill Shaft</button>
+                    <button data-filter="flatwork"
+                        class="filter-btn inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-4 py-2 text-blue-900 hover:bg-blue-50"><i
+                            class="fa-solid fa-trowel-bricks"></i> Flatwork</button>
+                </div>
+                <!-- <a href="#add-photos"
+                    class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-white shadow hover:bg-blue-700"><i
+                        class="fa-solid fa-upload"></i> Add Photos</a> -->
+            </div>
+
+            <div id="gallery-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <article class="tile reveal-on-scroll" data-cat="tiltup">
+                    <button class="group relative block w-full text-left" data-full="https://images.unsplash.com/photo-1553946550-4b8f3eea5451?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1173"
+                        data-caption="Tilt-Up Panels • Arlington, TX">
+                        <img src="https://images.unsplash.com/photo-1553946550-4b8f3eea5451?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1173" alt="Tilt-up concrete panels"
+                            class="h-64 w-full rounded-3xl object-cover shadow-sm ring-1 ring-blue-100 transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-900/40 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+                            <div class="text-white">
+                                <h3 class="font-semibold">Tilt-Up Panels</h3>
+                                <p class="text-white/80 text-sm">Arlington, TX</p>
+                            </div>
+                            <span
+                                class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="tile reveal-on-scroll" data-cat="foundation">
+                    <button class="group relative block w-full text-left" data-full="https://images.unsplash.com/photo-1640101086894-7d70c3e70179?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1073"
+                        data-caption="Monolithic Foundation • Frisco, TX">
+                        <img src="https://images.unsplash.com/photo-1640101086894-7d70c3e70179?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1073" alt="Monolithic foundation rebar layout"
+                            class="h-64 w-full rounded-3xl object-cover shadow-sm ring-1 ring-blue-100 transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-900/40 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+                            <div class="text-white">
+                                <h3 class="font-semibold">Foundation</h3>
+                                <p class="text-white/80 text-sm">Frisco, TX</p>
+                            </div>
+                            <span
+                                class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="tile reveal-on-scroll" data-cat="drillshaft">
+                    <button class="group relative block w-full text-left" data-full="https://images.unsplash.com/photo-1587052694737-a972e4186288?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170"
+                        data-caption="Drill Shaft (Rebar & Pour) • Irving, TX">
+                        <img src="https://images.unsplash.com/photo-1587052694737-a972e4186288?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170" alt="Drill shaft rebar cage and pour"
+                            class="h-64 w-full rounded-3xl object-cover shadow-sm ring-1 ring-blue-100 transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-900/40 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+                            <div class="text-white">
+                                <h3 class="font-semibold">Drill Shaft</h3>
+                                <p class="text-white/80 text-sm">Irving, TX</p>
+                            </div>
+                            <span
+                                class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="tile reveal-on-scroll" data-cat="flatwork">
+                    <button class="group relative block w-full text-left" data-full="https://images.unsplash.com/photo-1541888894402-f3b1af908be4?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170"
+                        data-caption="Flatwork & Finishing • Dallas, TX">
+                        <img src="https://images.unsplash.com/photo-1541888894402-f3b1af908be4?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170" alt="Concrete flatwork finishing"
+                            class="h-64 w-full rounded-3xl object-cover shadow-sm ring-1 ring-blue-100 transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-900/40 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+                            <div class="text-white">
+                                <h3 class="font-semibold">Flatwork & Finishing</h3>
+                                <p class="text-white/80 text-sm">Dallas, TX</p>
+                            </div>
+                            <span
+                                class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="tile reveal-on-scroll" data-cat="foundation">
+                    <button class="group relative block w-full text-left" data-full="https://images.unsplash.com/photo-1695327057610-3821e847601d?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1074"
+                        data-caption="Grade Beams • Plano, TX">
+                        <img src="https://images.unsplash.com/photo-1695327057610-3821e847601d?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1074" alt="Grade beams formwork and rebar"
+                            class="h-64 w-full rounded-3xl object-cover shadow-sm ring-1 ring-blue-100 transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-900/40 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+                            <div class="text-white">
+                                <h3 class="font-semibold">Grade Beams</h3>
+                                <p class="text-white/80 text-sm">Plano, TX</p>
+                            </div>
+                            <span
+                                class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="tile reveal-on-scroll" data-cat="flatwork">
+                    <button class="group relative block w-full text-left" data-full="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1176"
+                        data-caption="Structural Pour • DFW Metroplex">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1176" alt="Structural concrete pour"
+                            class="h-64 w-full rounded-3xl object-cover shadow-sm ring-1 ring-blue-100 transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-900/40 to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+                            <div class="text-white">
+                                <h3 class="font-semibold">Structural Pour</h3>
+                                <p class="text-white/80 text-sm">DFW Metroplex</p>
+                            </div>
+                            <span
+                                class="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                    </button>
+                </article>
+            </div>
+        </div>
+
+        <div id="gallery-lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/70 p-4">
+            <button
+                class="absolute top-4 right-4 h-10 w-10 rounded-xl bg-white/90 text-blue-700 shadow flex items-center justify-center"
+                aria-label="Close" data-close><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="max-w-5xl w-full">
+                <figure class="rounded-3xl overflow-hidden bg-white">
+                    <img id="glb-img" src="" alt="" class="w-full h-[70vh] object-contain bg-black/5">
+                    <figcaption id="glb-cap" class="p-3 text-center text-blue-900 text-sm bg-white"></figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .filter-btn.active {
+            background-color: rgb(37 99 235);
+            color: #fff;
+            border-color: rgb(37 99 235)
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .5s ease, transform .5s ease
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    </style>
+
+    <script>
+        const buttons = [...document.querySelectorAll('#gallery .filter-btn')];
+        const tiles = [...document.querySelectorAll('#gallery-grid .tile')];
+        function setActive(btn) { buttons.forEach(b => b.classList.remove('active')); btn.classList.add('active') }
+        function applyFilter(cat) { tiles.forEach(t => { const match = cat === 'all' || t.dataset.cat.split(' ').includes(cat); t.classList.toggle('hidden', !match) }) }
+        buttons.forEach(btn => btn.addEventListener('click', () => { setActive(btn); applyFilter(btn.dataset.filter) }));
+        applyFilter('all');
+
+        const lb = document.getElementById('gallery-lightbox');
+        const lbImg = document.getElementById('glb-img');
+        const lbCap = document.getElementById('glb-cap');
+        document.querySelectorAll('#gallery-grid button[data-full]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const src = btn.getAttribute('data-full') || btn.querySelector('img')?.src;
+                const cap = btn.getAttribute('data-caption') || btn.querySelector('h3')?.textContent || '';
+                lbImg.src = src; lbImg.alt = cap; lbCap.textContent = cap; lb.classList.remove('hidden'); lb.classList.add('flex');
+            });
+        });
+        function closeLB() { lb.classList.add('hidden'); lb.classList.remove('flex'); lbImg.src = ''; lbCap.textContent = '' }
+        lb.addEventListener('click', (e) => { if (e.target === lb || e.target.hasAttribute('data-close')) closeLB() });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.classList.contains('hidden')) closeLB() });
+
+        const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible') }) }, { threshold: 0.15 });
+        document.querySelectorAll('#gallery .reveal-on-scroll').forEach((el) => observer.observe(el));
+    </script>
+
+
+
+    <footer class="bg-white text-blue-900" aria-labelledby="footerHeading">
+        <h2 id="footerHeading" class="sr-only">Footer</h2>
+        <div class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+            <div class="grid gap-10 md:grid-cols-4">
+                <div class="space-y-4">
+                    <a href="./index.html" class="flex items-center gap-3">
+                        <img src="./docs/assets/images/logo.png" alt="FM DFW Constructions LLC" class="h-10 w-auto">
+                        <span class="sr-only">FM DFW Constructions LLC</span>
+                    </a>
+                    <p class="text-blue-900/80 text-sm">
+                        Precision concrete for foundations, tilt-up walls & drill shaft (rebar & pour).
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-blue-200 hover:bg-blue-50">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-blue-200 hover:bg-blue-50">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-blue-200 hover:bg-blue-50">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold mb-3">Quick Links</p>
+                    <ul class="space-y-2 text-blue-900/80">
+                        <li><a href="index.html" class="hover:text-blue-800 inline-flex items-center gap-2"> Home</a>
+                        </li>
+                        <li><a href="#services" class="hover:text-blue-800 inline-flex items-center gap-2"> Services</a>
+                        </li>
+                        <li><a href="#about" class="hover:text-blue-800 inline-flex items-center gap-2"> About</a></li>
+                        <li><a href="gallery.html" class="hover:text-blue-800 inline-flex items-center gap-2"> Recent
+                                Works</a></li>
+                        <li><a href="#contact" class="hover:text-blue-800 inline-flex items-center gap-2"> Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="font-semibold mb-3">Services</p>
+                    <ul class="space-y-2 text-blue-900/80">
+                        <li class="items-center gap-2"> Concrete Works</li>
+                        <li class="items-center gap-2"> Foundations</li>
+                        <li class="items-center gap-2"> Tilt-Up Walls</li>
+                        <li class="items-center gap-2"> Drill Shaft (rebar & pour)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="font-semibold mb-3">Contact</p>
+                    <ul class="space-y-2 text-blue-900/80">
+                        <li class="inline-flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-[#013ba9]"></i>
+                            <a href="mailto:info@fmdfwconstructions.com"
+                                class="hover:text-blue-800">info@fmdfwconstructions.com</a>
+                        </li>
+                        <li class="inline-flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-[#013ba9]"></i>
+                            Dallas–Fort Worth Metroplex
+                        </li>
+                        <li class="inline-flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-[#013ba9]"></i>
+                            Mon–Sat: 7:00–6:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="mt-10 border-t border-blue-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p class="text-blue-900/70 text-center text-sm">© <span id="year"></span> FM DFW Constructions LLC. All
+                    rights
+                    reserved.</p>
+                <p class="text-blue-900/60 text-xs">Licensed & Insured • Serving DFW</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+
+
+
+
+
+    <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="./docs/javascript/global.js"></script>
+    <!-- <script src="./docs/javascript/navbar.js"></script>
+    <script src="./docs/javascript/footer.js"></script> -->
+
+</body>
+
+</html>
