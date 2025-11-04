@@ -72,6 +72,27 @@
 
 <body class="overflow-x-hidden">
 
+    <!-- WhatsApp Floating Button -->
+    <a id="whatsapp-btn" href="https://wa.me/10000000000" target="_blank" rel="noopener"
+        class="fixed bottom-6 right-6 z-50 hidden opacity-0 transition-all duration-500 ease-out translate-y-4">
+        <div
+            class="flex items-center gap-2 rounded-full bg-[#25D366] text-white shadow-lg px-4 py-3 hover:bg-[#20b358]">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="font-medium hidden sm:inline">Chat with us</span>
+        </div>
+    </a>
+
+    <script>
+        const waBtn = document.getElementById('whatsapp-btn');
+        window.addEventListener('scroll', () => {
+            const shouldShow = window.scrollY > 250;
+            waBtn.classList.toggle('hidden', !shouldShow);
+            waBtn.classList.toggle('opacity-0', !shouldShow);
+            waBtn.classList.toggle('translate-y-4', !shouldShow);
+        });
+    </script>
+
+
     <div id="bottomToTopScroll"></div>
 
     <!-- NAV -->
@@ -184,9 +205,9 @@
                     </h1>
 
                     <p class="text-[#003ca7]/80 max-w-xl hero-fade-del1">
-                         FM DFW Constructions LLC delivers durable, on-time concrete solutions across the metroplex. From
-                    simple pads to large commercial projects — we handle it all. Call or contact us today for a free
-                    quote. We match and beat any price!
+                        FM DFW Constructions LLC delivers durable, on-time concrete solutions across the metroplex. From
+                        simple pads to large commercial projects — we handle it all. Call or contact us today for a free
+                        quote. We match and beat any price!
                     </p>
 
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#003ca7]/90 hero-fade-del1">
@@ -208,6 +229,10 @@
                         <a href="./gallery.html"
                             class="inline-flex md:w-auto w-full justify-center items-center gap-2 rounded-xl border border-blue-200 bg-white px-5 py-3 text-[#003ca7] hover:border-blue-300 hover:bg-blue-50">
                             <i class="fa-solid fa-images"></i> Recent Works
+                        </a>
+                        <a href="tel:+1-000-000-0000"
+                            class="inline-flex items-center gap-2 md:w-auto w-full justify-center text-[#003ca7] font-semibold hover:text-blue-700">
+                            <i class="fa-solid fa-phone"></i> (000) 000-0000
                         </a>
                     </div>
                 </div>
